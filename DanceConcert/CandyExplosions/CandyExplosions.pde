@@ -1,17 +1,7 @@
-//notes for mia:
-/*
-falling flowers can wait until she starts dancing to actually go
-  i changed this so that it starts when you press q but feel free to change it to whatever
-flowers more hot pink
-ms rothschild is thinking that the bursts of petals can go when the fans open (either with key press or sound recognition)
-color of fans more like (232, 52, 151)
 
-*/
 
 import processing.sound.*;
 
-PImage corner1;
-PImage corner2;
 
 boolean falling;
 
@@ -26,11 +16,6 @@ SoundFile song;
 
 void setup() {
   fullScreen();
-  corner1 = loadImage("corner1.png");
-  corner1.resize(int(width/2.5), (int(height/3)));
-  corner2 = loadImage("corner2.png");
-  corner2.resize(int(width/2.5), (int(height/3)));
-
 
 
   song = new SoundFile(this, "song.mp3");
@@ -75,19 +60,16 @@ void draw() {
     }
   }
 
-  /*if (beatDetector.isBeat()) {
+  if (beatDetector.isBeat()) {
     ParticleSystem newSystem = new ParticleSystem(int(random(width)), int(random(height)));
     systems.add(newSystem);
-  }*/
+  }
 
-  //fluid.display();
-  //solid.display();
+
 
   imageMode(CORNER);
   //tint(255,255);
-  tint(247, 155, 187, 255);
-  image(corner1, 0, 0);
-  image(corner2, width-corner2.width, 0);
+  //tint(247, 155, 187, 255);
 }
 
 void mouseClicked() {
