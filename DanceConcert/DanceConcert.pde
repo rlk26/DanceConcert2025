@@ -5,6 +5,7 @@ import processing.sound.*;
 void setup() {
   fullScreen(P3D);
   scenes.add(new Blank());
+  scenes.add(new Skyline());
 }
 
 void draw() {
@@ -12,7 +13,11 @@ void draw() {
 }
 
 void keyPressed(){
+  if (key == '0') {
+    current = 1;
+  } else {
   scenes.get(current).keyPressed();
+  }
 }
 
 void keyReleased() {
