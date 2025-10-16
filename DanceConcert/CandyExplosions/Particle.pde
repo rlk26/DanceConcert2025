@@ -1,6 +1,8 @@
 PImage candy1;
 PImage candy2;
 PImage candy3;
+PImage candy4;
+PImage candy5;
 
 
 class Particle {
@@ -14,18 +16,24 @@ class Particle {
   int lifeSpan;
   PImage candy;
   int r;
+  float rotate;
+ 
 
 
   //Constructor Function
   Particle(PVector pIn, PVector vIn) {
     initialize();
-    r = int(random(3));
+    r = int(random(5));
     if (r==0) {
       candy= candy1;
     } else if (r==1) {
       candy= candy2;
-    } else {
+    } else if (r==2) {
       candy= candy3;
+    } else if (r==3) {
+      candy= candy4;
+    } else {
+      candy= candy5;
     }
 
     //assign initial values based on parameters passed into constructor
@@ -37,6 +45,7 @@ class Particle {
     candy.resize(int(radius*2), int(radius*2));
     mass = 1;
     lifeSpan = 400;
+    rotate = random(100);
   }
 
   Particle() {
@@ -46,8 +55,12 @@ class Particle {
       candy= candy1;
     } else if (r==1) {
       candy= candy2;
-    } else {
+    } else if (r==2) {
       candy= candy3;
+    } else if (r==3) {
+      candy= candy4;
+    } else {
+      candy= candy5;
     }
     if (candy == null) {
       println("Error: Particle flower image is null!");
@@ -55,13 +68,14 @@ class Particle {
 
     //assign initial values based on parameters passed into constructor
     position = new PVector(random(width), -random(height));
-    velocity = new PVector(0, 2);
+    velocity = new PVector(random(1), random(4));
     acceleration = new PVector(0, 0);
     topSpeed = 10;
     radius = 40;
     candy.resize(int(radius*2), int(radius*2));
     mass = random(3);
     lifeSpan = 1000;
+    rotate = random(100);
   }
 
 
@@ -70,9 +84,11 @@ class Particle {
       candy1= loadImage("candy1.png");
       candy2= loadImage("candy2.png");
       candy3= loadImage("candy3.png");
+      candy4= loadImage("candy4.png");
+      candy5= loadImage("candy5.png");
     }
     if (candy1 == null || candy2 == null || candy3 == null) {
-      println("Error: One or more flower images are missing!");
+      println("Error: One or more candy images are missing!");
     }
   }
   //function to check if particle is dead
@@ -152,6 +168,7 @@ class Particle {
     noStroke();
     pushMatrix();
     translate(position.x, position.y);
+    rotate(rotate);
     rotate(angle);
     imageMode(CENTER);
     tint(247, 155, 187, lifeSpan);
