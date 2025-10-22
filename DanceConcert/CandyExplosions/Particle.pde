@@ -68,9 +68,9 @@ class Particle {
 
     //assign initial values based on parameters passed into constructor
     position = new PVector(random(width), -random(height));
-    velocity = new PVector(random(1), random(4));
+    velocity = new PVector(random(3), random(8));
     acceleration = new PVector(0, 0);
-    topSpeed = 10;
+    topSpeed = 15;
     radius = 40;
     candy.resize(int(radius*2), int(radius*2));
     mass = random(3);
