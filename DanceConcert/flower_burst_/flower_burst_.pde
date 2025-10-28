@@ -31,12 +31,13 @@ void setup() {
 
 void draw() {
   // random background color
-  int randColor = int(random(3));
-  if (randColor == 0) colorRandom = #FAF9DE;
-  else if (randColor == 1) colorRandom = #FFF2FC;
-  else colorRandom = #E1EBF2;
+//  int randColor = int(random(3));
+//  if (randColor == 0) colorRandom = ##050505;
+//  else if (randColor == 1) colorRandom = #FFB4EF;
+//  else colorRandom = #A4D7FA;
   
-  background(colorRandom);
+  background(0);
+  frameRate(0.5);
 
   // global phase for synchronized breathing (2-second cycle)
   float cycleDuration = 2000.0; // 2 seconds
