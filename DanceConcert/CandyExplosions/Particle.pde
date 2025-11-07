@@ -44,7 +44,7 @@ class Particle {
     radius = 20;
     candy.resize(int(radius*2), int(radius*2));
     mass = 1;
-    lifeSpan = 400;
+    lifeSpan = 0;
     rotate = random(100);
   }
 
@@ -93,7 +93,7 @@ class Particle {
   }
   //function to check if particle is dead
   boolean isDead() {
-    if (lifeSpan < 0) {
+    if (lifeSpan >255) {
       return true;
     } else {
       return false;
@@ -116,7 +116,9 @@ class Particle {
   }
 
   void update() {
-    lifeSpan-=4;
+    if (frameCount%5==0){
+      lifeSpan+=2;
+    }
 
     angleAcc = acceleration.x/10;
     angleVel += angleAcc;
@@ -171,8 +173,12 @@ class Particle {
     rotate(rotate);
     rotate(angle);
     imageMode(CENTER);
-    tint(247, 155, 187, lifeSpan);
+
+   // tint(100, 100, 100, lifeSpan);
     image(candy, 0, 0);
+    fill(0,0,0,lifeSpan);
+    rectMode(CENTER);
+    rect(0,0,radius*2,radius*2);
 
     popMatrix();
   }

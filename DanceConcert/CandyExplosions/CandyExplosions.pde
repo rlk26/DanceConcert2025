@@ -13,6 +13,7 @@ ParticleSystem ps;
 AudioIn in;
 BeatDetector beatDetector;
 SoundFile song;
+Pic iceCream;
 
 void setup() {
   fullScreen();
@@ -26,6 +27,8 @@ void setup() {
 
   systems = new ArrayList<ParticleSystem>();
   particles = new ArrayList<Particle>();
+  
+  iceCream = new Pic("icecream", 100, 100);
 
   for (int i = 0; i < 15; i++) {
     Particle p = new Particle();
