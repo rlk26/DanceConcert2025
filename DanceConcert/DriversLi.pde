@@ -4,7 +4,6 @@ class DriversLi extends Scene{
   ArrayList<RedLight> redLights;
   boolean showRedLights = false;
   DriversLi (){
-    fullScreen();
     smooth();
   
 
