@@ -14,9 +14,11 @@ void draw() {
 
 void keyPressed(){
   if (key == '0') {
+    current = 0;
+  } else if (key == '1'){
     current = 1;
   } else {
-  scenes.get(current).keyPressed();
+      scenes.get(current).keyPressed();
   }
 }
 
