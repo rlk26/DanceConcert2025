@@ -7,6 +7,7 @@ void setup() {
   scenes.add(new Blank());
   scenes.add(new Skyline());
   scenes.add(new DriversLi());
+  scenes.add(new Pulses());
 }
 
 void draw() {
@@ -23,6 +24,9 @@ void keyPressed(){
   } else if (key == '2'){
     reset();
     current = 2;
+  } else if (key == '3'){
+    reset();
+    current = 3;
   } else {
       scenes.get(current).keyPressed();
   }
