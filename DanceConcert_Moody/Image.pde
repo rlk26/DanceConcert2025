@@ -22,13 +22,10 @@ class Image
   {
    println(width, height);
     name = imageName;
-    
-    initialize();
    
-    
-    
     image = loadImage(name);
-    
+    initialize();
+        
   }
 
   
@@ -36,20 +33,28 @@ class Image
   {
 
     image(image, xPos, yPos);
-    image.resize(xSize, ySize);
+
     fill(0, 0, 0, z);
     rect(xPos, yPos, xSize, ySize);
     //if(frameCount%9 == 0)
-    if(frameCount%10 == 0)
+    if(frameCount%5 == 0)
     {
      z+=vz;
     }
-    if(z < 0 || z > 255)
+    if(z < 0)
     {
-     vz *= -1;
-     bounceCount += 1;
-    
+       z = 0;
+       vz *= -1;
+       bounceCount += 1;
     }
+    
+     if(z > 255)
+    {
+      z = 255;
+      vz *= -1;
+      bounceCount += 1;
+    }
+     || z > 255)
   }
   
 
@@ -61,11 +66,16 @@ class Image
     ySize = (int)random(200, height); 
     xPos = (int)random(0, width - xSize); 
     yPos = (int)random(0, height - ySize);
+    
+    image.resize(xSize, ySize);
+    
+    z = 255;
+    vz = -5;
   }
   
   boolean isDead()
   {
-   return bounceCount >= 2; 
+   return bounceCount > 2; 
   }
     
 }
