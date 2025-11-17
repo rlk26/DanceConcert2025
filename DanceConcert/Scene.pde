@@ -6,8 +6,3 @@ abstract class Scene{
   void keyReleased(){}
   void mouseClicked(){}
 }
-class Blank extends Scene{
-  void run(){
-    background(0);
-  }
-}

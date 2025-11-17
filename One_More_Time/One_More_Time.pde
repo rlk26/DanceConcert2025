@@ -4,7 +4,7 @@ float lastSpawnTime = 0;
 int lifespan = 2000; 
 
 void setup() {
-  size(800, 800);
+  fullScreen();
   shapes = new ArrayList<Shape>();
   background(0);
 }
