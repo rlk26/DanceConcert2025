@@ -54,7 +54,7 @@ class Image
       vz *= -1;
       bounceCount += 1;
     }
-     || z > 255)
+
   }
   
 
@@ -75,7 +75,7 @@ class Image
   
   boolean isDead()
   {
-   return bounceCount > 2; 
+   return bounceCount >= 2; 
   }
     
 }
