@@ -1,24 +1,24 @@
-int numSpiders = 2;
-float minSpiderSize, maxSpiderSize;
-float legSwingAmount, legLengthRatio;
-color backgroundColor, spiderBodyColor, legColor, strokeColor;
-Spider[] spiders;
+public class Spiders extends Scene {
+  int numSpiders = 2;
+  float minSpiderSize, maxSpiderSize;
+  float legSwingAmount, legLengthRatio;
+  color backgroundColor, spiderBodyColor, legColor, strokeColor;
+  Spider[] spiders;
+  
+  PImage clownImg, skeletonImg, spiderwebImg, img4, img5, img6, img7, img8, img9, img10,
+  img11, img12, img13;
+  PImage currentImage = null;
+  PImage scaledImage = null;
 
-PImage clownImg, skeletonImg, spiderwebImg, img4, img5, img6;
-PImage currentImage = null;
-PImage scaledImage = null;
+  boolean flashing = false;
+  float flashAlpha = 0;
+  int flashStartTime = 0;
+  int flashDuration = 400;
+  int fadeOutDuration = 200;
 
-boolean flashing = false;
-float flashAlpha = 0;
-int flashStartTime = 0;
-int flashDuration = 400;
-int fadeOutDuration = 200;
+  float safeHeight;
 
-float safeHeight;
-
-void setup() {
-  fullScreen();
-  smooth(8);
+Spiders () {
 
   safeHeight = height * (2.0/3.0);
 
@@ -36,19 +36,30 @@ void setup() {
   for (int i = 0; i < numSpiders; i++) 
     spiders[i] = new Spider(random(width), random(safeHeight));
 
+  // Load images
   clownImg = loadImage("clown.png");
   skeletonImg = loadImage("skeleton.png");
   spiderwebImg = loadImage("spiderweb.png");
 
+  // Add three more images
   img4 = loadImage("img4.png");
   img5 = loadImage("img5.png");
   img6 = loadImage("img6.png");
+  
+  img7 = loadImage("img7.png");
+  img8 = loadImage("img8.png");
+  img9 = loadImage("img9.png");
+  img10 = loadImage("img10.png");
+  img11 = loadImage("img11.png");
+  img12 = loadImage("img12.png");
+  img13 = loadImage("img13.png");
 
   imageMode(CENTER);
 }
 
-void draw() {
+void run() {
   background(backgroundColor);
+  imageMode(CENTER);
   
   for (Spider s : spiders) {
     s.update();
@@ -65,6 +76,13 @@ void keyPressed() {
   if (key == 'r' || key == 'R') triggerFlash(img4);
   if (key == 't' || key == 'T') triggerFlash(img5);
   if (key == 'y' || key == 'Y') triggerFlash(img6);
+  if (key == 'u' || key == 'U') triggerFlash(img7);
+  if (key == 'i' || key == 'I') triggerFlash(img8);
+  if (key == 'o' || key == 'O') triggerFlash(img9);
+  if (key == 'p' || key == 'P') triggerFlash(img10);
+  if (key == 'a' || key == 'A') triggerFlash(img11);
+  if (key == 's' || key == 'S') triggerFlash(img12);
+  if (key == 'd' || key == 'D') triggerFlash(img13);
 }
 
 void triggerFlash(PImage img) {
@@ -149,7 +167,6 @@ class Spider {
       }
     }
 
-    // Resting behavior
     if (resting) {
       if (now - restTimer > random(800, 1600)) resting = false;
       else vel.mult(0.9);
@@ -216,4 +233,5 @@ class Spider {
     line(0, 0, jointX, jointY);
     line(jointX, jointY, endX, endY);
   }
+}
 }

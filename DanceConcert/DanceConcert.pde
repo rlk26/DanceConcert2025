@@ -8,6 +8,8 @@ void setup() {
   scenes.add(new Skyline());
   scenes.add(new DriversLi());
   scenes.add(new Pulses());
+  scenes.add(new Footprint());
+  scenes.add(new Spiders());
 }
 
 void draw() {
@@ -16,17 +18,23 @@ void draw() {
 
 void keyPressed(){
   if (key == '0') {
-    reset();
     current = 0;
+    reset();
   } else if (key == '1'){
-    reset();
     current = 1;
+    reset();
   } else if (key == '2'){
-    reset();
     current = 2;
-  } else if (key == '3'){
     reset();
+  } else if (key == '3'){
     current = 3;
+    reset();
+  } else if (key == '4'){
+    current = 4;
+    reset();
+  } else if (key == '5'){
+    current = 5;
+    reset();
   } else {
       scenes.get(current).keyPressed();
   }
@@ -40,7 +48,7 @@ void mouseClicked() {
 }
 
 void reset() {
-  scenes.get(current).reset();
+  scenes.get(current).reset(); 
   frameRate(60);
   background(0);
   colorMode(RGB);

@@ -7,12 +7,12 @@ boolean shatterTriggered = false;
 ArrayList<Spark> sparks;
 ArrayList<Shard> shards;
 
-int TOTAL_TIME = 30000; // make it 30 sec for testing
+int TOTAL_TIME = 90000; // make it 30 sec for testing
 int SHATTER_TIME = 27000; // shatter at 27 sec (3 sec before end)
 
 void setup() 
 {
-  size(800, 600);
+  fullScreen();
   colorMode(RGB, 255);
   
   performanceStarted = true;
