@@ -14,7 +14,7 @@ void setup() {
 }
 
 void draw() {
-  image(bridgerton, 0, -150);
+  image(bridgerton, 0, -275);
   
   for (Petal p : petals) {
     p.update();
