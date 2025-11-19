@@ -63,9 +63,9 @@ class Image
     bounceCount = 0;
     
     xSize = (int)random(200, width); 
-    ySize = (int)random(200, height); 
+    ySize = (int)random(200, height/2); 
     xPos = (int)random(0, width - xSize); 
-    yPos = (int)random(0, height - ySize);
+    yPos = (int)random(0, height/2);
     
     image.resize(xSize, ySize);
     
