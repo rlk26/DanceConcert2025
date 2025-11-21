@@ -2,22 +2,26 @@ import processing.sound.*;
 
 SoundFile player;
 AudioIn mic;
-
 Amplitude analyzer;
 FFT fft;
-
-boolean useMic = false;
 
 float[] smoothedBands;
 
 ArrayList<Particle> particles;
 int numParticles;
-
 ArrayList<Polygon> polygons;
 int maxPolygons = 4;
 
+boolean useMic = false;
+static int WIDTH, HEIGHT, X, Y;
+
 void setup() {
   fullScreen();
+  
+  X = width / 6;
+  Y = 0;
+  WIDTH = width / 3 * 2;
+  HEIGHT = height / 4 * 3;
   
   mic = new AudioIn(this, 0);
   player = new SoundFile(this, "Whiplash.mp3");
@@ -84,30 +88,30 @@ void draw() {
 
 void drawAudioWave(FFT fft) {
   stroke(255);
-  strokeWeight(width * 0.00208);
+  strokeWeight(WIDTH * 0.00208);
   
   int nBands = fft.spectrum.length / 5;
-  float bandWidth = (float) width / nBands;
+  float bandWidth = (float) WIDTH / nBands;
   
   for (int i = 0; i <= nBands / 2; i++) {
     float amp = fft.spectrum[i];
     smoothedBands[i] = lerp(smoothedBands[i], amp, 0.5);
     
     float x = i * bandWidth;
-    float bandHeight = smoothedBands[i] * width * 0.521;
+    float bandHeight = smoothedBands[i] * WIDTH * 0.521;
 
-    line(x, height/2 - bandHeight, x, height/2 + bandHeight);
-    line(width - x, height/2 - bandHeight, width - x, height/2 + bandHeight);
+    line(X + x, Y + HEIGHT/2 - bandHeight, X + x, Y + HEIGHT/2 + bandHeight);
+    line(X + WIDTH - x, Y + HEIGHT/2 - bandHeight, X + WIDTH - x, Y + HEIGHT/2 + bandHeight);
   }
 }
 
 void drawCircle(float amp) {
   fill(0, 80);
   stroke(255);
-  strokeWeight(width * 0.00208);
-  float diameter = map(amp, 0, 0.3, width * 0.104, width * 0.167);
+  strokeWeight(WIDTH * 0.00208);
+  float diameter = map(amp, 0, 0.3, WIDTH * 0.104, WIDTH * 0.167);
   
-  ellipse(width/2, height/2, diameter, diameter);
+  ellipse(X + WIDTH/2, Y + HEIGHT/2, diameter, diameter);
 }
 
 boolean detectBeat(float threshold, float amp) {

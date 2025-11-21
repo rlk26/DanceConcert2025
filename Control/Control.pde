@@ -6,13 +6,26 @@ ArrayList<Raindrop> raindrops;
 Lightning lightning;
 Flame[] flames;
 
+int fadeDuration = 5000;
+boolean playMusic = false;
+
+static int WIDTH, HEIGHT, X, Y;
+
 void setup() {
   fullScreen();
-  player = new SoundFile(this, "Control.mp3");
-  player.play();
   
-  room = loadImage("room.png");
-  room.resize(width, height);
+  X = width / 6;
+  Y = 0;
+  WIDTH = width / 3 * 2;
+  HEIGHT = height / 4 * 3;
+  
+  if (playMusic) {
+    player = new SoundFile(this, "Control.mp3");
+    player.play();
+  }
+  
+  room = loadImage("room-3.png");
+  room.resize(WIDTH, HEIGHT);
   
   lightning = new Lightning();
   
@@ -22,27 +35,27 @@ void setup() {
   }
   
   flames = new Flame[] {
-    new Flame(width * 0.03, height * 0.83),
-    new Flame(width * 0.34, height * 0.83),
-    new Flame(width * 0.64, height * 0.83),
-    new Flame(width * 0.94, height * 0.83)
+    new Flame(X + WIDTH * 0.03, Y + HEIGHT * 0.84),
+    new Flame(X + WIDTH * 0.34, Y + HEIGHT * 0.84),
+    new Flame(X + WIDTH * 0.64, Y + HEIGHT * 0.84),
+    new Flame(X + WIDTH * 0.94, Y + HEIGHT * 0.84)
   };
 }
 
 void draw() {
   background(0);
   
-  int levels = int(height * 0.0556);
+  int levels = int(HEIGHT * 0.0556);
   color startCol = color(10, 45, 90);
   color endCol = color(0);
-  float step = height / float(levels);
+  float step = HEIGHT / float(levels);
   
   for (int i = 0; i < levels; i++) {
     color curCol = lerpColor(startCol, endCol, i / float(levels));
     noStroke();
     fill(curCol);
     
-    rect(0, i * step, width, step);
+    rect(X, Y + i * step, WIDTH, step);
   }
   
   for (Raindrop r : raindrops) {
@@ -57,10 +70,15 @@ void draw() {
   lightning.display();
   lightning.update();
   
-  image(room, 0, 0);
+  image(room, X, Y);
   
   for (Flame f : flames) {
     f.display();
     f.update();
+  }
+  
+  if (millis() < fadeDuration) {
+    fill(0, map(millis(), 0, fadeDuration, 255, 0));
+    rect(0, 0, width, height);
   }
 }

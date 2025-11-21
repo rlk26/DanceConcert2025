@@ -9,14 +9,14 @@ class Polygon {
   color c;
 
   Polygon(float amp) {
-    x = random(1) < 0.5 ? random(-width * 0.6, -width * 0.3) : random(width * 0.3, width * 0.6);
-    y = random(1) < 0.5 ? random(-height * 0.6, -height * 0.3) : random(height * 0.3, height * 0.6);
-    z = random(width * 0.208, width * 0.781);
+    x = random(1) < 0.5 ? random(-WIDTH * 0.6, -WIDTH * 0.3) : random(WIDTH * 0.3, WIDTH * 0.6);
+    y = random(1) < 0.5 ? random(-HEIGHT * 0.6, -HEIGHT * 0.3) : random(HEIGHT * 0.3, HEIGHT * 0.6);
+    z = random(WIDTH * 0.208, WIDTH * 0.781);
     
     angle = random(TWO_PI);
-    speed = random(width * 0.0026, width * 0.00781);
+    speed = random(WIDTH * 0.0026, WIDTH * 0.00781);
     
-    radius = map(amp, 0, 0.3, width * 0.00521, width * 0.026);
+    radius = map(amp, 0, 0.3, WIDTH * 0.00521, WIDTH * 0.026);
     alpha = random(150, 255);
     sides = int(random(3, 7));
     c = color(255);
@@ -25,17 +25,17 @@ class Polygon {
   void update() {
     z -= speed;
     alpha -= 7;
-    radius += width * 0.00156;
+    radius += WIDTH * 0.00156;
   }
   
   void display() {
-    float scale = width * 0.208 / z;
-    displayX = x * scale + width / 2;
-    displayY = y * scale + height / 2;
+    float scale = WIDTH * 0.208 / z;
+    displayX = X + x * scale + WIDTH / 2;
+    displayY = Y + y * scale + HEIGHT / 2;
 
     fill(0, 80);
     stroke(c, alpha);
-    strokeWeight(width * 0.00208);
+    strokeWeight(WIDTH * 0.00208);
     
     polygon(displayX, displayY, radius, sides);
   }
