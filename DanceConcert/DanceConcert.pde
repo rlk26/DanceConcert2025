@@ -5,11 +5,11 @@ import processing.sound.*;
 void setup() {
   fullScreen();
   scenes.add(new Blank());
-  scenes.add(new Skyline());
+  scenes.add(new Spiders());
   scenes.add(new DriversLi());
+  scenes.add(new Skyline());
   scenes.add(new Pulses());
   scenes.add(new Footprint());
-  scenes.add(new Spiders());
 }
 
 void draw() {
