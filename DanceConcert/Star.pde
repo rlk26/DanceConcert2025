@@ -3,7 +3,7 @@ class Star {
   float size;
   float twinkle;
   float twinkleSpeed;
-  
+
   Star() {
     x = random(width);
     y = random(height);
@@ -12,7 +12,7 @@ class Star {
     twinkle = random(TWO_PI);
     twinkleSpeed = random(0.02, 0.08);
   }
-  
+
   void update() {
     twinkle += twinkleSpeed;
     x += sin(frameCount * 0.001 + z * 0.01) * 0.5;
@@ -22,7 +22,7 @@ class Star {
     if (y < 0) y = height;
     if (y > height) y = 0;
   }
-  
+
   void display() {
     float brightness = map(sin(twinkle), -1, 1, 100, 255);
     noStroke();

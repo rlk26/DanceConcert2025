@@ -4,7 +4,7 @@ class RedLight {
   float glow;
   float glowSpeed;
   float vx, vy;
-  
+
   RedLight() {
     x = random(width);
     y = random(height);
@@ -14,7 +14,7 @@ class RedLight {
     vx = random(-0.3, 0.3);
     vy = random(-0.3, 0.3);
   }
-  
+
 
   void update() {
     glow += glowSpeed;
@@ -28,19 +28,16 @@ class RedLight {
   void display() {
     float brightness = map(sin(glow * 0.05), -1, 1, 80, 220);
     noStroke();
-    
-    
+
+
     for (int i = 6; i > 0; i--) {
       float alpha = brightness * 0.07 * i;
       fill(255, 60, 60, alpha);
       ellipse(x, y, size * i * 0.5, size * i * 0.5);
     }
-    
+
     // Core light with soft shimmer
     fill(255, 100, 100, brightness);
     ellipse(x, y, size * 0.5, size * 0.5);
-  
-  
-}
-
+  }
 }

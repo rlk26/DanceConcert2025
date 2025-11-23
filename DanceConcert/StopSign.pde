@@ -5,7 +5,7 @@ class StopSign {
   float rotSpeed;
   float driftAngle;
   float driftSpeed;
-  
+
   StopSign() {
     x = random(width);
     y = random(height);
@@ -15,7 +15,7 @@ class StopSign {
     driftAngle = random(TWO_PI);
     driftSpeed = random(0.2, 0.6);
   }
-  
+
   void update() {
     rotation += rotSpeed;
     driftAngle += 0.01;
@@ -26,12 +26,12 @@ class StopSign {
     if (y < -size) y = height + size;
     if (y > height + size) y = -size;
   }
-  
+
   void display() {
     pushMatrix();
     translate(x, y);
     rotate(rotation);
-   
+
     for (int i = 4; i > 0; i--) {
       float alpha = 25 * i;
       float blur = i * 2;
@@ -40,16 +40,16 @@ class StopSign {
       strokeWeight(2);
       drawOctagon(0, 0, size + blur);
     }
-    
-   
+
+
     stroke(255, 180);
     strokeWeight(1);
     line(-size * 0.3, -size * 0.3, size * 0.3, size * 0.3);
     line(size * 0.3, -size * 0.3, -size * 0.3, size * 0.3);
-    
+
     popMatrix();
   }
-  
+
   void drawOctagon(float x, float y, float r) {
     beginShape();
     for (int i = 0; i < 8; i++) {

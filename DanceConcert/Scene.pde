@@ -1,8 +1,14 @@
-abstract class Scene{
-  Scene(){}
-  void run(){}
-  void reset(){}
-  void keyPressed(){}
-  void keyReleased(){}
-  void mouseClicked(){}
+abstract class Scene {
+  Scene() {
+  }
+  void run() {
+  }
+  void reset() {
+  }
+  void keyPressed() {
+  }
+  void keyReleased() {
+  }
+  void mouseClicked() {
+  }
 }

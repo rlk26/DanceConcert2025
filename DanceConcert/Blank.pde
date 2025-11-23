@@ -1,5 +1,5 @@
-class Blank extends Scene{
-  void run(){
+class Blank extends Scene {
+  void run() {
     background(0);
   }
 }

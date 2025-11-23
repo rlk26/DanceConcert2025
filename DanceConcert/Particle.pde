@@ -17,7 +17,7 @@ class Particle {
   PImage candy;
   int r;
   float rotate;
- 
+
 
 
   //Constructor Function
@@ -116,7 +116,7 @@ class Particle {
   }
 
   void update() {
-    if (frameCount%5==0){
+    if (frameCount%5==0) {
       lifeSpan+=2;
     }
 
@@ -174,18 +174,18 @@ class Particle {
     rotate(angle);
     imageMode(CENTER);
 
-   // tint(100, 100, 100, lifeSpan);
+    // tint(100, 100, 100, lifeSpan);
     image(candy, 0, 0);
-    fill(0,0,0,lifeSpan);
+    fill(0, 0, 0, lifeSpan);
     rectMode(CENTER);
-    rect(0,0,radius*2,radius*2);
+    rect(0, 0, radius*2, radius*2);
 
     popMatrix();
   }
 
   void fall() {
     lifeSpan-=4;
-    if(position.y>=height){ 
+    if (position.y>=height) {
       position.y=-random(height);
       position.x = random(width);
       lifeSpan = 1000;
