@@ -4,14 +4,20 @@ import processing.sound.*;
 
 void setup() {
   fullScreen();
-  scenes.add(new Blank());
-  scenes.add(new Footprint());
-  scenes.add(new Spiders());
-  scenes.add(new DriversLi());
-  scenes.add(new AppleTree());
-  scenes.add(new Control(this));
-  scenes.add(new Skyline());
-  scenes.add(new Pulses());
+  scenes.add(new Blank()); //0
+  scenes.add(new Footprint()); //1
+  scenes.add(new Spiders());//2
+  scenes.add(new DriversLi());//3
+  scenes.add(new AppleTree());//4
+  scenes.add(new Control(this));//5
+  scenes.add(new PinkWaves());//6
+  scenes.add(new IfIWereAMan());//7
+  scenes.add(new Moody());//8
+  scenes.add(new FeelingGood());//9
+  scenes.add(new Pulses());//10
+  scenes.add(new Birds());//11
+  scenes.add(new CandyExplosions(this));//12
+  scenes.add(new Skyline());//13
 }
 
 void draw() {
@@ -49,6 +55,15 @@ void keyPressed() {
   } else if (key == '9') {
     current = 9;
     reset();
+  } else if (key == 'z' || key == 'Z') {
+    current = 10;
+    reset();
+  } else if (key == 'x' || key == 'X') {
+    current = 11;
+    reset();
+  } else if (key == 'c' || key == 'C') {
+    current = 12;
+    reset();
   } else {
     scenes.get(current).keyPressed();
   }
@@ -75,4 +90,5 @@ void reset() {
   imageMode(CORNER);
   strokeCap(ROUND);
   textMode(MODEL);
+  noCursor();
 }
