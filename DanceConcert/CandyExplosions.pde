@@ -49,7 +49,7 @@ class CandyExplosions extends Scene {
     falling = false;
   }
 
-  void draw() {
+  void run() {
     background(0);
 
 

@@ -3,7 +3,7 @@ int current = 0;
 import processing.sound.*;
 
 void setup() {
-  fullScreen();
+  fullScreen(P3D);
   scenes.add(new Blank()); //0
   scenes.add(new Footprint()); //1
   scenes.add(new Spiders());//2
@@ -17,7 +17,11 @@ void setup() {
   scenes.add(new Pulses());//10
   scenes.add(new Birds());//11
   scenes.add(new CandyExplosions(this));//12
-  scenes.add(new Skyline());//13
+  scenes.add(new Whiplash(this));//13
+  scenes.add(new Skyline());//14
+  scenes.add(new FlowerBurst()); //15
+  scenes.add(new GlueSong()); //16
+  scenes.add(new OneMoreTime()); //17
 }
 
 void draw() {
@@ -63,6 +67,21 @@ void keyPressed() {
     reset();
   } else if (key == 'c' || key == 'C') {
     current = 12;
+    reset();
+  } else if (key == 'v' || key == 'V') {
+    current = 13;
+    reset();
+  } else if (key == 'b' || key == 'B') {
+    current = 14;
+    reset();
+  } else if (key == 'n' || key == 'N') {
+    current = 15;
+    reset();
+  } else if (key == 'm' || key == 'M') {
+    current = 16;
+    reset();
+  } else if (key == ',' || key == '<') {
+    current = 17;
     reset();
   } else {
     scenes.get(current).keyPressed();

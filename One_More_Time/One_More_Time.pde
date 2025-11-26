@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 ArrayList<Shape> shapes;
 float spawnInterval = 500;
 float lastSpawnTime = 0;

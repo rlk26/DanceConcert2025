@@ -1,10 +1,9 @@
 class Birds extends Scene {
-  final int NUM_BIRDS = 10;
+  int NUM_BIRDS = 10;
   Bird[] birds;
   PImage birdImg;
 
-  void setup() {
-    fullScreen();
+  Birds() {
     background(0);
     imageMode(CENTER);
 
@@ -19,7 +18,7 @@ class Birds extends Scene {
     }
   }
 
-  void draw() {
+  void run() {
     background(0);
     for (Bird b : birds) {
       b.update();
