@@ -3,7 +3,7 @@ int current = 0;
 import processing.sound.*;
 
 void setup() {
-  fullScreen(P3D);
+  fullScreen();
   scenes.add(new Blank()); //0
   scenes.add(new Footprint()); //1
   scenes.add(new Spiders());//2
@@ -20,7 +20,7 @@ void setup() {
   scenes.add(new Whiplash(this));//13
   scenes.add(new Skyline());//14
   scenes.add(new FlowerBurst()); //15
-  scenes.add(new GlueSong()); //16
+  //scenes.add(new GlueSong()); //16
   scenes.add(new OneMoreTime()); //17
 }
 

@@ -7,7 +7,6 @@ class OneMoreTime extends Scene {
 
 
   OneMoreTime() {
-    fullScreen();
     shapes = new ArrayList<Shape>();
     background(0);
   }

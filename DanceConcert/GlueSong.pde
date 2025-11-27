@@ -13,7 +13,6 @@ class GlueSong extends Scene {
   boolean fadingOut = false;
 
   GlueSong() {
-    noCursor();
     //fullScreen();
     camPos = new PVector(0, 0, 600);
     camCenter = new PVector(0, 0, 0);

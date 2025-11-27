@@ -191,33 +191,5 @@ class Moody extends Scene {
     {
       return bounceCount >= 2;
     }
-  }
-
-  //void Setup()
-  //{
-
-  //image1 = loadImage("horse.png");
-  //image1.resize(xSize, ySize);
-  //image2 = loadImage("branch.png");
-  //image2.resize(xSize, ySize);
-  //image3 = loadImage("groupOfHorses.png");
-  //image3.resize(xSize, ySize);
-  //image4 = loadImage("HorseCloseUp");
-  //image4.resize(xSize, ySize);
-  //image5 = loadImage("fullHorse");
-  //image5.resize(xSize, ySize);
-  //image6 = loadImage("boat");
-  //image6.resize(xSize, ySize);
-
-  //}
-
-  //void Display()
-  //{
-  //image(image1, xPos, yPos);
-  //image(image2, xPos, yPos);
-  //image(image3, xPos, yPos);
-  //image(image4, xPos, yPos);
-  //image(image5, xPos, yPos);
-  //image(image6, xPos, yPos);
-  //}
+  } 
 }
