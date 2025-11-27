@@ -1,4 +1,4 @@
-public class Spiders extends Scene {
+class Spiders extends Scene {
   int numSpiders = 2;
   float minSpiderSize, maxSpiderSize;
   float legSwingAmount, legLengthRatio;

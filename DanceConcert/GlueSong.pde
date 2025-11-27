@@ -1,4 +1,4 @@
-class GlueSong extends Scene {
+/*class GlueSong extends Scene {
   PVector camPos, camCenter;
   ArrayList<Tree> trees;
 
@@ -32,8 +32,6 @@ class GlueSong extends Scene {
   void draw3D(PGraphics pg) {
     pg.beginDraw();
     pg.background(0);
-
-    // camera
     pg.camera(camPos.x, camPos.y, camPos.z,
               camCenter.x, camCenter.y, camCenter.z,
               0, 1, 0);
@@ -52,11 +50,8 @@ class GlueSong extends Scene {
     }
 
     pg.endDraw();
-
-    // draw 3D buffer to screen
     image(pg, 0, 0);
 
-    // draw 2D bubble UI *above* 3D
     updateBubble();
     displayBubble();
   }
@@ -138,7 +133,6 @@ class GlueSong extends Scene {
     }
   }
 
-  // 🔹 bubble fade logic
   void updateBubble() {
     if (fadingIn) {
       bubbleAlpha += 5;
@@ -179,4 +173,4 @@ class GlueSong extends Scene {
     popMatrix();
     hint(ENABLE_DEPTH_TEST);
   }
-}
+}*/
