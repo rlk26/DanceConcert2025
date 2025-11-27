@@ -3,23 +3,21 @@ class GlueSong extends Scene {
   ArrayList<Tree> trees;
 
   PImage treeTex;
-
   PImage[] speeches;
   int totalSpeeches = 16;
 
   float bubbleAlpha = 0;
-  int bubbleIndex = -1; // -1 = none
+  int bubbleIndex = -1;
   boolean fadingIn = false;
   boolean fadingOut = false;
 
   GlueSong() {
-    //fullScreen();
+    use3D = true;
+
     camPos = new PVector(0, 0, 600);
     camCenter = new PVector(0, 0, 0);
 
-
     treeTex = loadImage("DandeSeed.png");
-
 
     speeches = new PImage[totalSpeeches];
     for (int i = 0; i < totalSpeeches; i++) {
@@ -31,26 +29,34 @@ class GlueSong extends Scene {
     for (int i = 0; i < 25; i++) spawnTree();
   }
 
-  void run() {
-    background(0);
+  void draw3D(PGraphics pg) {
+    pg.beginDraw();
+    pg.background(0);
 
-    // --- 3D camera ---
-    camera(camPos.x, camPos.y, camPos.z,
-      camCenter.x, camCenter.y, camCenter.z,
-      0, 1, 0);
-    lights();
+    // camera
+    pg.camera(camPos.x, camPos.y, camPos.z,
+              camCenter.x, camCenter.y, camCenter.z,
+              0, 1, 0);
 
-    // --- trees ---
+    pg.lights();
+
+    // trees
     for (int i = trees.size() - 1; i >= 0; i--) {
       Tree t = trees.get(i);
       t.update();
-      t.display();
+      t.display(pg);
       if (t.done()) {
         trees.remove(i);
         spawnTree();
       }
     }
 
+    pg.endDraw();
+
+    // draw 3D buffer to screen
+    image(pg, 0, 0);
+
+    // draw 2D bubble UI *above* 3D
     updateBubble();
     displayBubble();
   }
@@ -91,25 +97,28 @@ class GlueSong extends Scene {
       swayAngle += swaySpeed;
     }
 
-    void display() {
-      pushMatrix();
-      translate(pos.x + sin(swayAngle) * 10,
-        pos.y + cos(swayAngle * 0.5) * 10,
-        pos.z);
+    void display(PGraphics pg) {
+      pg.pushMatrix();
+      pg.translate(pos.x + sin(swayAngle) * 10,
+                   pos.y + cos(swayAngle * 0.5) * 10,
+                   pos.z);
 
-      tint(255, constrain(alpha, 0, 255));
-      noStroke();
-      beginShape();
-      textureMode(NORMAL);
-      texture(tex);
+      pg.tint(255, constrain(alpha, 0, 255));
+      pg.noStroke();
+
       float w = size;
       float h = size * 1.5;
-      vertex(-w/2, -h/2, 0, 0, 0);
-      vertex( w/2, -h/2, 0, 1, 0);
-      vertex( w/2, h/2, 0, 1, 1);
-      vertex(-w/2, h/2, 0, 0, 1);
-      endShape(CLOSE);
-      popMatrix();
+
+      pg.beginShape();
+      pg.textureMode(NORMAL);
+      pg.texture(tex);
+      pg.vertex(-w/2, -h/2, 0, 0, 0);
+      pg.vertex( w/2, -h/2, 0, 1, 0);
+      pg.vertex( w/2,  h/2, 0, 1, 1);
+      pg.vertex(-w/2,  h/2, 0, 0, 1);
+      pg.endShape(CLOSE);
+
+      pg.popMatrix();
     }
 
     boolean done() {
@@ -117,10 +126,9 @@ class GlueSong extends Scene {
     }
   }
 
+  // 🔹 input
   void mousePressed() {
-
     if (!fadingIn && !fadingOut) {
-
       if (bubbleIndex == -1) {
         bubbleIndex = 0;
         fadingIn = true;
@@ -130,8 +138,8 @@ class GlueSong extends Scene {
     }
   }
 
+  // 🔹 bubble fade logic
   void updateBubble() {
-
     if (fadingIn) {
       bubbleAlpha += 5;
       if (bubbleAlpha >= 255) {
@@ -144,9 +152,7 @@ class GlueSong extends Scene {
         bubbleAlpha = 0;
         fadingOut = false;
 
-
         bubbleIndex++;
-
         if (bubbleIndex >= totalSpeeches) {
           bubbleIndex = -1;
         } else {
@@ -167,7 +173,8 @@ class GlueSong extends Scene {
     tint(255, bubbleAlpha);
 
     PImage current = speeches[bubbleIndex];
-    image(current, width/1.75, height/2.3, current.width * 1.4, current.height * 1.4); //2,3,.7,.7
+    image(current, width/1.75, height/2.3,
+          current.width * 1.4, current.height * 1.4);
 
     popMatrix();
     hint(ENABLE_DEPTH_TEST);
