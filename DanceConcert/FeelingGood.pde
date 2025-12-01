@@ -3,9 +3,8 @@ class FeelingGood extends Scene {
 
   FeelingGood() {
 
-    fullScreen();
-
     lines = new ArrayList<Line>();
+    frameRate(5);
   }
 
 

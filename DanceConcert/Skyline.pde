@@ -4,7 +4,8 @@ class Skyline extends Scene {
   color color1;
   color color2;
   color color3;
-  int y = 0;
+  int y1, y2;
+  float y3;
   PImage stars;
   Skyline () {
     background(0);
@@ -14,22 +15,32 @@ class Skyline extends Scene {
     stars = loadImage("stars.png");
     stars.resize(width, height);
 
-    color1 = color(31, 35, 41);
-    color2 = color(212, 187, 129);
-    color3 = color(0, 0, 0);
+    color1 = color(#373A5A);
+    color2 = color(#F57723);
+    color3 = color(#E8AE3B);
 
-    frameRate(10);
+    y1 = 0;
+    y2 = height-height/4;
+    y3 = height-height/3.7;
+
+    rameRate(0.5);
   }
   void run () {
-    frameRate(10);
-    setGradient(0, y, width, height, color1, color2, Y_AXIS);
-    y++;
-
+    frameRate(0.5);
+    setGradient(0, y1, width, height, color1, color2, Y_AXIS);
+    y1++;
+    //setGradient(0, y2, width, height/2, color2, color3, Y_AXIS);
+    // y2++;
     imageMode(CENTER);
-    image(skyline, width/2, height-height/4);
+    image(skyline, width/2, height-height/2);
 
     imageMode(CENTER);
     tint(255, 128);
+    image(stars, width/2, height/2);
+
+    fill(0);
+    rectMode(CORNER);
+    rect(0, y3, width, height/4);
   }
   void setGradient(int x, int y, float w, float h, color c1, color c2, int axis) {
     noFill();
