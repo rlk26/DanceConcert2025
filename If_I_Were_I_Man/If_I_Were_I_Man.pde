@@ -1,5 +1,7 @@
 PImage bridgerton;
-ArrayList<Petal> petals; 
+ArrayList<Petal> petals;
+boolean showImage = false;
+float transparency = 0;
 
 void setup() {
   fullScreen();
@@ -8,13 +10,20 @@ void setup() {
   
   petals = new ArrayList<Petal>();
   
-  for (int i = 0; i < 40; i++) {
-    petals.add(new Petal());
-  }
 }
 
 void draw() {
-  image(bridgerton, 0, -275);
+  if (showImage) {
+    background(0);
+    tint(255, transparency);
+    image(bridgerton, 0, -275);
+    tint(255, 255);
+    if (transparency < 255) {
+      transparency += .5;
+    }
+  } else {
+    background(0); 
+  }
   
   for (Petal p : petals) {
     p.update();
@@ -22,4 +31,9 @@ void draw() {
   }
 }
 
-//background fade in 
+void mousePressed() {
+  showImage = true;
+  for (int i = 0; i < 30; i++) {
+    petals.add(new Petal());
+  }
+}
