@@ -35,15 +35,17 @@ class FlowerBurst extends Scene {
     //  else if (randColor == 1) colorRandom = #FFB4EF;
     //  else colorRandom = #A4D7FA;
 
-    background(0);
-    frameRate(0.5);
+    if (frameCount % 120 == 0)
+    {
+      background(0);
 
-    // global phase for synchronized breathing (2-second cycle)
-    float cycleDuration = 2000.0; // 2 seconds
-    float globalPhase = (millis() % cycleDuration) / cycleDuration * TWO_PI;
+      // global phase for synchronized breathing (2-second cycle)
+      float cycleDuration = 2000.0; // 2 seconds
+      float globalPhase = (millis() % cycleDuration) / cycleDuration * TWO_PI;
 
-    for (Flower f : flowers) {
-      f.display(globalPhase);
+      for (Flower f : flowers) {
+        f.display(globalPhase);
+      }
     }
   }
 

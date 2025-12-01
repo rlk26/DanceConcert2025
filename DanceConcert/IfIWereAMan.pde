@@ -10,6 +10,7 @@ class IfIWereAMan extends Scene {
     petals = new ArrayList<Petal>();
   }
   void run() {
+    println("hello");
     if (showImage) {
       background(0);
       tint(255, transparency);
@@ -28,7 +29,7 @@ class IfIWereAMan extends Scene {
     }
   }
 
-  void mousePressed() {
+  void mouseClicked() {
     showImage = true;
     for (int i = 0; i < 30; i++) {
       petals.add(new Petal());

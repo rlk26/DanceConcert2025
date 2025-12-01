@@ -4,21 +4,22 @@ class FeelingGood extends Scene {
   FeelingGood() {
 
     lines = new ArrayList<Line>();
-    frameRate(5);
   }
 
 
   void run() {
     background(0);
-    frameRate(5);
+    if (frameCount % 12 == 0)
+    {
 
 
-    for (int u = 0; u < 10; u++) {
-      lines.add(new Line(random(width), random(height), random(3, 15), random(50, 300)));
-    }
-    for (Line l : lines) {
-      l.display();
-      l.update();
+      for (int u = 0; u < 10; u++) {
+        lines.add(new Line(random(width), random(height), random(3, 15), random(50, 300)));
+      }
+      for (Line l : lines) {
+        l.display();
+        l.update();
+      }
     }
   }
 

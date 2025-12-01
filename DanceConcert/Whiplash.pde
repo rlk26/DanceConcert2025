@@ -13,7 +13,7 @@ class Whiplash extends Scene {
   ArrayList<Polygon> polygons;
   int maxPolygons = 4;
 
-  boolean useMic = false;
+  boolean useMic = true;
   int WIDTH, HEIGHT, X, Y;
 
   Whiplash(PApplet pap) {
@@ -69,7 +69,7 @@ class Whiplash extends Scene {
 
     drawAudioWave(fft);
 
-    if (detectBeat(0.5, amp) && polygons.size() < maxPolygons) {
+    if (detectBeat(0.3, amp) && polygons.size() < maxPolygons) {
       polygons.add(new Polygon(amp));
     }
 

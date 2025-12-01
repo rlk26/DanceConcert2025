@@ -119,7 +119,7 @@ class OneMoreTime extends Scene {
     abstract void display();
   }
 
-  void mousePressed() {
+  void mouseClicked() {
     showImage = true;
   }
 

@@ -122,7 +122,7 @@
   }
 
   // 🔹 input
-  void mousePressed() {
+  void mouseClicked() {
     if (!fadingIn && !fadingOut) {
       if (bubbleIndex == -1) {
         bubbleIndex = 0;

@@ -23,24 +23,28 @@ class Skyline extends Scene {
     y2 = height-height/4;
     y3 = height-height/3.7;
 
-    frameRate(0.5);
+    //frameRate(0.5);
   }
   void run () {
-    frameRate(0.5);
-    setGradient(0, y1, width, height, color1, color2, Y_AXIS);
-    y1++;
-    //setGradient(0, y2, width, height/2, color2, color3, Y_AXIS);
-    // y2++;
-    imageMode(CENTER);
-    image(skyline, width/2, height-height/2);
+    // frameRate(0.5);
 
-    imageMode(CENTER);
-    tint(255, 128);
-    image(stars, width/2, height/2);
+    if (frameCount % 120 == 0)
+    {
+      setGradient(0, y1, width, height, color1, color2, Y_AXIS);
+      y1++;
+      //setGradient(0, y2, width, height/2, color2, color3, Y_AXIS);
+      // y2++;
+      imageMode(CENTER);
+      image(skyline, width/2, height-height/2);
 
-    fill(0);
-    rectMode(CORNER);
-    rect(0, y3, width, height/4);
+      imageMode(CENTER);
+      tint(255, 128);
+      image(stars, width/2, height/2);
+
+      fill(0);
+      rectMode(CORNER);
+      rect(0, y3, width, height/4);
+    }
   }
   void setGradient(int x, int y, float w, float h, color c1, color c2, int axis) {
     noFill();
