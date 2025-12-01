@@ -4,8 +4,6 @@ class FlowerBurst extends Scene {
   PImage f1, f2, f3;
 
   FlowerBurst() {
-    fullScreen();
-
     f1 = loadImage("flower1.png");
     f2 = loadImage("flower2.png");
     f3 = loadImage("flower3.png");

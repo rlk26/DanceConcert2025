@@ -16,7 +16,6 @@ class Moody extends Scene {
   Moody()
   {
     //size(500, 500);
-    fullScreen();
 
     Image image1 = new Image("horse.png");
     //Image image2 = new Image("branch.png");
@@ -191,5 +190,5 @@ class Moody extends Scene {
     {
       return bounceCount >= 2;
     }
-  } 
+  }
 }

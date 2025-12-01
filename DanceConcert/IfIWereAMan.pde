@@ -1,22 +1,37 @@
 class IfIWereAMan extends Scene {
   PImage bridgerton;
   ArrayList<Petal> petals;
+  boolean showImage = false;
+  float transparency = 0;
   IfIWereAMan() {
     bridgerton = loadImage("bridgertonn_2.jpeg");
     bridgerton.resize(width, height);
 
     petals = new ArrayList<Petal>();
-
-    for (int i = 0; i < 40; i++) {
-      petals.add(new Petal());
-    }
   }
   void run() {
-    image(bridgerton, 0, -275);
+    if (showImage) {
+      background(0);
+      tint(255, transparency);
+      image(bridgerton, 0, -275);
+      tint(255, 255);
+      if (transparency < 255) {
+        transparency += .5;
+      }
+    } else {
+      background(0);
+    }
 
     for (Petal p : petals) {
       p.update();
       p.display();
+    }
+  }
+
+  void mousePressed() {
+    showImage = true;
+    for (int i = 0; i < 30; i++) {
+      petals.add(new Petal());
     }
   }
 
@@ -33,7 +48,7 @@ class IfIWereAMan extends Scene {
 
       //random position across screen
       x = random(width);
-      y = random(-height, 0);
+      y = random(-height, -50);
       speed = random(3/4, 1);
       rotation = random(TWO_PI);
     }

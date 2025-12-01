@@ -23,7 +23,7 @@ class Skyline extends Scene {
     y2 = height-height/4;
     y3 = height-height/3.7;
 
-    rameRate(0.5);
+    frameRate(0.5);
   }
   void run () {
     frameRate(0.5);

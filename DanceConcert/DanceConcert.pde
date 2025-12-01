@@ -81,7 +81,7 @@ void keyPressed() {
     current = 16;
     reset();
   } else if (key == ',' || key == '<') {
-    current = 17;
+    //current = 17;
     reset();
   } else {
     scenes.get(current).keyPressed();

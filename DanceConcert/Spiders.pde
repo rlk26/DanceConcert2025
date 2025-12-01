@@ -37,9 +37,9 @@ class Spiders extends Scene {
       spiders[i] = new Spider(random(width), random(safeHeight));
 
     // Load images
-    clownImg = loadImage("clown.png");
-    skeletonImg = loadImage("skeleton.png");
-    spiderwebImg = loadImage("spiderweb.png");
+    clownImg = loadImage("img1.png");
+    skeletonImg = loadImage("img2.png");
+    spiderwebImg = loadImage("img3.png");
 
     // Add three more images
     img4 = loadImage("img4.png");

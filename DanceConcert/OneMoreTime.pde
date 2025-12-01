@@ -1,10 +1,12 @@
 class OneMoreTime extends Scene {
+
+
   ArrayList<Shape> shapes;
   float spawnInterval = 500;
   float lastSpawnTime = 0;
   int lifespan = 2050;
-  String visualScreen = "uno";
-
+  boolean showImage = false;
+  boolean showFireworks = false;
 
   OneMoreTime() {
     shapes = new ArrayList<Shape>();
@@ -12,6 +14,24 @@ class OneMoreTime extends Scene {
   }
 
   void run() {
+    if (showImage) {
+      mainVisual();
+    } else if (showFireworks) {
+      background(0);
+      for (int i = shapes.size() - 1; i >= 0; i--) {
+        Shape s = shapes.get(i);
+        s.update();
+        s.display();
+        if (s.isDead()) {
+          shapes.remove(i);
+        }
+      }
+    } else {
+      background(0);
+    }
+  }
+
+  void mainVisual() {
     background(0);
     if (millis() - lastSpawnTime > spawnInterval) {
       for (int i = 0; i < int(random(4, 7)); i++) {
@@ -41,9 +61,6 @@ class OneMoreTime extends Scene {
     }
   }
 
-  void keyPressed() {
-  }
-
   abstract class Shape {
     float x, y;
     float size;
@@ -52,11 +69,12 @@ class OneMoreTime extends Scene {
     float birthTime;
     float rotation;
     float rotationSpeed;
+    float sizeSpeed;
 
     Shape() {
       x = random(width);
       y = random(height);
-      size = random(70, 100);
+      size = random(50, 80);
       vx = random(-2, 2);
       vy = random(-2, 2);
       color fluorescentGreen = color(50, 255, 50);
@@ -71,17 +89,26 @@ class OneMoreTime extends Scene {
       birthTime = millis();
       rotation = random(TWO_PI);
       rotationSpeed = random(0.01, 0.015);
+      sizeSpeed = random(0.1, 0.5);
     }
 
     void update() {
-      x += vx;
-      y += vy;
-      rotation += rotationSpeed;
-      if (x < 0 || x > width) {
-        vx *= -1;
-      }
-      if (y < 0 || y > height) {
-        vy *= -1;
+      if (showFireworks) {
+        x += vx;
+        y += vy;
+        rotation += rotationSpeed;
+        size += sizeSpeed;
+      } else {
+        x += vx;
+        y += vy;
+        rotation += rotationSpeed;
+        size += sizeSpeed;
+        if (x < 0 || x > width) {
+          vx *= -1;
+        }
+        if (y < 0 || y > height) {
+          vy *= -1;
+        }
       }
     }
 
@@ -91,6 +118,32 @@ class OneMoreTime extends Scene {
 
     abstract void display();
   }
+
+  void mousePressed() {
+    showImage = true;
+  }
+
+  void keyPressed() {
+    if (key == ' ') {
+      fireWorks();
+    }
+  }
+
+  void fireWorks() {
+    showImage = false;
+    showFireworks = true;
+    for (Shape s : shapes) {
+      s.size = 50;
+      s.x = width/2;
+      s.y = height/2;
+      s.vx = random(-5, 5);
+      s.vy = random(-5, 5);
+      s.birthTime = 16000;
+    }
+  }
+
+  //at the beginning make the screen all black and then have a keypressed function to start visual one
+  //key 1 = black key 2 = visual green and pink key 3 = fireworks
   class EllipseObj extends Shape {
     void display() {
       pushMatrix();

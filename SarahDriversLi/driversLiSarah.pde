@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 // more directions for all of this are line by line
 // To adjust brightness for stars use map() lines in Star.display()
