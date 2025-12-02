@@ -1,4 +1,4 @@
-class GlueSong extends Scene {
+/*class GlueSong extends Scene {
   PVector camPos, camCenter;
   ArrayList<Tree> trees;
 
@@ -173,4 +173,4 @@ class GlueSong extends Scene {
     popMatrix();
     hint(ENABLE_DEPTH_TEST);
   }
-}
+}*/

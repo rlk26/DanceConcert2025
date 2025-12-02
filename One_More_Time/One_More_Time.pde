@@ -21,7 +21,7 @@ void draw() {
       s.update();
       s.display();
       if (s.isDead()) {
-        shapes.remove(i);
+        //shapes.remove(i);
       }
     }
   } else {
