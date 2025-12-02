@@ -98,9 +98,9 @@ void mouseClicked() {
 void reset() {
   scenes.get(current).reset();
   scenes.get(current).init();
-  frameRate(60);
   background(0);
   colorMode(RGB);
+  frameRate(60);
   stroke(0);
   fill(255);
   strokeWeight(1);

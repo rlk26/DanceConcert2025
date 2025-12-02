@@ -8,9 +8,9 @@ class FeelingGood extends Scene {
 
 
   void run() {
-    background(0);
-    if (frameCount % 12 == 0)
+    if (frameCount % 3 == 0)
     {
+      background(0);
 
 
       for (int u = 0; u < 10; u++) {
