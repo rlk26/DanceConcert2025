@@ -11,7 +11,7 @@ class Petal {
     
     //random position across screen
     x = random(width);
-    y = random(-height, 0); 
+    y = random(-height, -50); 
     speed = random(3/4, 1); 
     rotation = random(TWO_PI);
   }

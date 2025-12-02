@@ -23,17 +23,17 @@ class Lightning {
   void display() {
     if (active) {
       noStroke();
-      fill(200, 220, 255, random(30, 70));
-      rect(0, 0, width, height);
+      fill(200, 220, 255, random(20, 100));
+      rect(X, Y, WIDTH, HEIGHT);
       
       if (random(1) < 0.5) {
         fill(60, 130, 230, random(40, 100));
-        rect(0, 0, width, height);
+        rect(X, Y, WIDTH, HEIGHT);
       }
       
       if (random(1) < 0.15) {
         fill(30, 90, 170, random(10, 50));
-        rect(0, 0, width, height);
+        rect(X, Y, WIDTH, HEIGHT);
       }
     }
   }

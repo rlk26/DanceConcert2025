@@ -1,7 +1,11 @@
 class EllipseObj extends Shape {
   void display() {
-    noStroke();
+    pushMatrix();
+    translate(x, y);
+    rotate(rotation);
     fill(c);
-    ellipse(x, y, size, size);
+    noStroke();
+    ellipse(0, 0, size, size);
+    popMatrix();
   }
 }

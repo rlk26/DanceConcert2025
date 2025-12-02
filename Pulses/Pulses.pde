@@ -21,12 +21,14 @@ void draw() {
 
   if (random(1) < 0.015 && !bigDrop) {
     flashAlpha = random(50, 100);
-    flashColor = color(random(100,255), random(100,255), random(100,255));
+    flashColor = color(random(150,200), random(0,25), random(0,25));
+    //flashColor = color(255, 255, 255);
   }
 
   if (bigDrop) {
     flashAlpha = 255;
-    flashColor = color(random(200,255), random(180,255), random(180,255));
+    flashColor = color(random(150,200), random(0,25), random(0,25));
+    //flashColor = color(255, 255, 255);
     burstRadius = 0;
     burstGrowth = random(30, 60);
     shakeIntensity = random(8, 20);
