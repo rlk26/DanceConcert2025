@@ -136,11 +136,7 @@ void drawEverything()
    {
      allBlack = false;
    }
-   if(key = 'g')
-   {
-     background(0);
-    images.get(image7);
-   }
+
    
  }
  
