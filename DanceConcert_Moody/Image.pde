@@ -1,5 +1,7 @@
 //class for images
 //display images and clear rectangle that increases in opacity and becomes black
+int slot = 0;
+
 class Image
 {
 
@@ -12,6 +14,9 @@ class Image
   PImage image;
   String name;
   int bounceCount = 0;
+  private boolean invisible;
+
+ 
   
   
 
@@ -22,7 +27,7 @@ class Image
   {
    println(width, height);
     name = imageName;
-   
+    
     image = loadImage(name);
     initialize();
         
@@ -37,7 +42,7 @@ class Image
     fill(0, 0, 0, z);
     rect(xPos, yPos, xSize, ySize);
     //if(frameCount%9 == 0)
-    if(frameCount%5 == 0)
+    if(frameCount%15 == 0)
     {
      z+=vz;
     }
@@ -54,7 +59,9 @@ class Image
       vz *= -1;
       bounceCount += 1;
     }
-
+  
+    //fill(255);
+    //text("slot: " + slot, 50, 50);
   }
   
 
@@ -62,21 +69,40 @@ class Image
   {
     bounceCount = 0;
     
-    xSize = (int)random(200, width); 
+    xSize = (int)random(200, width/3); 
     ySize = (int)random(200, height/2); 
     xPos = (int)random(0, width - xSize); 
-    yPos = (int)random(0, height/2);
+    yPos = (int)random(0, height*0.2);
     
     image.resize(xSize, ySize);
     
     z = 255;
     vz = -5;
+    
+   if(slot == 0)
+   {
+     xPos = (int)random(0, width/3);
+   }
+   else if(slot == 1)
+   {
+     xPos = (int)random(width/2, 3*width/4);
+   }
+   
+   slot ++;
+   
+   if(slot>1)
+   {
+     slot = 0;
+   }
+   
+ 
   }
   
   boolean isDead()
   {
    return bounceCount >= 2; 
   }
+ 
     
 }
 

@@ -1,11 +1,14 @@
-//b//int x = width/2;
+
 //int y = height/2;
 
 
 int z = 255;
 int vz = -5;
+boolean overlap = true;
+boolean allBlack = false;
 ArrayList<Image> images= new ArrayList<Image>();
-Image current;
+//Image current;
+ArrayList<Image> currentImage = new ArrayList<Image>();
 
 
 
@@ -55,33 +58,96 @@ Image image18 = new Image("pebbles.png");
   images.add(image18);
   
  chooseNew();
-  
+ 
+ 
+ 
 }
+
+
 
 
  void chooseNew()
 {
-  int r = (int)random(0, 14);
-  current = images.get(r);
-  current.initialize();
-  
+ 
+    int r = (int)random(0,13);
+    Image temp = images.get(r);
+    temp.initialize();
+    currentImage.add(temp);
+    
+    /* for(int n = 0; n <=currentImage.size(); n++)
+   {
+     if((n + 1).initialize() == n.initialize())
+     {
+       (n+1).initialize()
+     }
+   } */
+   
 }
   
 
 
-void draw()
+void drawEverything()
 {
   background(0);
-
-    current.display();
+  
+   //chooseNew();
     
-    //if(frameCount%1000 == 0)
-    if(current.isDead() == true)
+    for(Image image: currentImage)
+    {
+      image.display();
+    }
+    
+    if(frameCount%500 == 0)
     {
       chooseNew();
     }
     
+    for(int i = currentImage.size()-1; i>=0; i--)
+    {
+      if(currentImage.get(i).isDead())
+      {
+        currentImage.remove(i);
+      }
+    }
+    
+  
+    
  }
+ 
+ void draw()
+ {
+   if(allBlack)
+   {
+     background(0);
+   }
+   else
+   {
+     drawEverything();
+   }
+ }
+ 
+ void keyPressed()
+ {
+   if(keyCode == 'b')
+   {
+     allBlack = true;
+   }
+ }
+ 
+ 
+ 
+/* void keyPressed()
+ {
+   if(keyCode = 'b')
+   {
+   //=make all images black
+   }
+   
+   if(keyCode = 'g')
+   {
+     image7.display();
+   }
+ } */
  
 
   
