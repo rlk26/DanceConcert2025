@@ -4,7 +4,7 @@ ArrayList<Tree> trees;
 PImage treeTex;
 
 PImage[] speeches;
-int totalSpeeches = 16;
+int totalSpeeches = 12;
 
 float bubbleAlpha = 0;
 int bubbleIndex = -1; // -1 = none
@@ -12,19 +12,19 @@ boolean fadingIn = false;
 boolean fadingOut = false;
 
 void setup() {
-  fullScreen (P3D);
+  //size(1500, 1000, P3D); //1280,720
   noCursor();
-  //fullScreen();
+  fullScreen(P3D);
   camPos = new PVector(0, 0, 600);
   camCenter = new PVector(0, 0, 0);
 
+ 
+  treeTex = loadImage("Dand_Flow.png");
 
-  treeTex = loadImage("DandeSeed.png");
-
-
+ 
   speeches = new PImage[totalSpeeches];
   for (int i = 0; i < totalSpeeches; i++) {
-    String filename = "Speech" + nf(i+1, 2) + ".png";
+    String filename = "Glue" + nf(i+1, 2) + ".png";
     speeches[i] = loadImage(filename);
   }
 
@@ -34,11 +34,11 @@ void setup() {
 
 void draw() {
   background(0);
-
+ 
   // --- 3D camera ---
   camera(camPos.x, camPos.y, camPos.z,
-    camCenter.x, camCenter.y, camCenter.z,
-    0, 1, 0);
+         camCenter.x, camCenter.y, camCenter.z,
+         0, 1, 0);
   lights();
 
   // --- trees ---
@@ -76,9 +76,9 @@ class Tree {
   Tree(PVector p, PImage tex) {
     this.pos = p.copy();
     this.tex = tex;
-    this.baseSize = random(30, 50);
+    this.baseSize = random(40, 60);
     this.size = baseSize;
-    this.maxSize = baseSize + random(30, 60);
+    this.maxSize = baseSize + random(40, 70);
     this.growth = random(0.3, 0.6);
   }
 
@@ -95,8 +95,8 @@ class Tree {
   void display() {
     pushMatrix();
     translate(pos.x + sin(swayAngle) * 10,
-      pos.y + cos(swayAngle * 0.5) * 10,
-      pos.z);
+              pos.y + cos(swayAngle * 0.5) * 10,
+              pos.z);
 
     tint(255, constrain(alpha, 0, 255));
     noStroke();
@@ -107,8 +107,8 @@ class Tree {
     float h = size * 1.5;
     vertex(-w/2, -h/2, 0, 0, 0);
     vertex( w/2, -h/2, 0, 1, 0);
-    vertex( w/2, h/2, 0, 1, 1);
-    vertex(-w/2, h/2, 0, 0, 1);
+    vertex( w/2,  h/2, 0, 1, 1);
+    vertex(-w/2,  h/2, 0, 0, 1);
     endShape(CLOSE);
     popMatrix();
   }
@@ -121,11 +121,14 @@ class Tree {
 void mousePressed() {
 
   if (!fadingIn && !fadingOut) {
-
+ 
     if (bubbleIndex == -1) {
       bubbleIndex = 0;
       fadingIn = true;
-    } else if (bubbleAlpha == 255) {
+    }
+
+ 
+    else if (bubbleAlpha == 255) {
       fadingOut = true;
     }
   }
@@ -139,13 +142,15 @@ void updateBubble() {
       bubbleAlpha = 255;
       fadingIn = false;
     }
-  } else if (fadingOut) {
+  }
+
+  else if (fadingOut) {
     bubbleAlpha -= 5;
     if (bubbleAlpha <= 0) {
       bubbleAlpha = 0;
       fadingOut = false;
 
-
+     
       bubbleIndex++;
 
       if (bubbleIndex >= totalSpeeches) {

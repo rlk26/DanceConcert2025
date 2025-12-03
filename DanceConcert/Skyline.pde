@@ -28,7 +28,7 @@ class Skyline extends Scene {
   void run () {
     // frameRate(0.5);
 
-    if (frameCount % 10 == 0)
+    if (frameCount % 11 == 0)
    {
       setGradient(0, y1, width, height, color1, color2, Y_AXIS);
       y1++;

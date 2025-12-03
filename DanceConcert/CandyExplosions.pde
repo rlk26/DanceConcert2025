@@ -17,12 +17,14 @@ class CandyExplosions extends Scene {
   PImage candy4;
   PImage candy5;
   PImage icecream;
+  
+  boolean useMic = true;
 
 
   CandyExplosions(PApplet pap) {
 
     song = new SoundFile(pap, "song.mp3");
-    song.play();
+    //song.play();
 
     gravity = new PVector(0, 0.02);
     wind = new PVector(0, 0);
@@ -42,8 +44,8 @@ class CandyExplosions extends Scene {
 
     beatDetector = new BeatDetector(pap);
     in = new AudioIn(pap);
-    beatDetector.input(song);
-    //beatDetector.input(in);
+    //beatDetector.input(song);
+    beatDetector.input(in);
     beatDetector.sensitivity(250);
 
     falling = false;
