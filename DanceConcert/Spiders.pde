@@ -121,7 +121,7 @@ class Spiders extends Scene {
     if (flashAlpha > 0) {
       tint(255, flashAlpha);
       image(scaledImage, width/2, scaledImage.height/2);
-      noTint();
+      //noTint();
     }
   }
 

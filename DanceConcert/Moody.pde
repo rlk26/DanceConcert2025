@@ -1,13 +1,11 @@
 class Moody extends Scene {
-
-  //b//int x = width/2;
-  //int y = height/2;
-
-
   int z = 255;
   int vz = -5;
+  boolean overlap = true;
+  boolean allBlack = false;
   ArrayList<Image> images= new ArrayList<Image>();
-  Image current;
+  //Image current;
+  ArrayList<Image> currentImage = new ArrayList<Image>();
 
 
 
@@ -59,27 +57,89 @@ class Moody extends Scene {
   }
 
 
+
+
   void chooseNew()
   {
-    int r = (int)random(0, 14);
-    current = images.get(r);
-    current.initialize();
+
+    int r = (int)random(0, 13);
+    Image temp = images.get(r);
+    temp.initialize();
+    currentImage.add(temp);
+
+    /* for(int n = 0; n <=currentImage.size(); n++)
+     {
+     if((n + 1).initialize() == n.initialize())
+     {
+     (n+1).initialize()
+     }
+     } */
   }
 
 
 
-  void run()
+  void drawEverything()
   {
     background(0);
 
-    current.display();
+    //chooseNew();
 
-    //if(frameCount%1000 == 0)
-    if (current.isDead() == true)
+    for (Image image : currentImage)
+    {
+      image.display();
+    }
+
+    if (frameCount%500 == 0)
     {
       chooseNew();
     }
+
+    for (int i = currentImage.size()-1; i>=0; i--)
+    {
+      if (currentImage.get(i).isDead())
+      {
+        currentImage.remove(i);
+      }
+    }
   }
+
+  void run()
+  {
+    if (allBlack)
+    {
+      background(0);
+    } else
+    {
+      drawEverything();
+    }
+  }
+
+  void keyPressed()
+  {
+    if (key == 'b')
+    {
+      allBlack = true;
+    }
+    if (key == 'v')
+    {
+      allBlack = false;
+    }
+  }
+
+
+
+  /* void keyPressed()
+   {
+   if(keyCode = 'b')
+   {
+   //=make all images black
+   }
+   
+   if(keyCode = 'g')
+   {
+   image7.display();
+   }
+   } */
 
 
 
@@ -113,8 +173,15 @@ class Moody extends Scene {
 
 
 
+
+
+
   //class for images
   //display images and clear rectangle that increases in opacity and becomes black
+  //class for images
+  //display images and clear rectangle that increases in opacity and becomes black
+  int slot = 0;
+
   class Image
   {
 
@@ -127,6 +194,9 @@ class Moody extends Scene {
     PImage image;
     String name;
     int bounceCount = 0;
+    private boolean invisible;
+
+
 
 
 
@@ -151,7 +221,7 @@ class Moody extends Scene {
       fill(0, 0, 0, z);
       rect(xPos, yPos, xSize, ySize);
       //if(frameCount%9 == 0)
-      if (frameCount%5 == 0)
+      if (frameCount%15 == 0)
       {
         z+=vz;
       }
@@ -168,6 +238,9 @@ class Moody extends Scene {
         vz *= -1;
         bounceCount += 1;
       }
+
+      //fill(255);
+      //text("slot: " + slot, 50, 50);
     }
 
 
@@ -175,15 +248,30 @@ class Moody extends Scene {
     {
       bounceCount = 0;
 
-      xSize = (int)random(200, width);
+      xSize = (int)random(200, width/3);
       ySize = (int)random(200, height/2);
       xPos = (int)random(0, width - xSize);
-      yPos = (int)random(0, height/2);
+      yPos = (int)random(0, height*0.2);
 
       image.resize(xSize, ySize);
 
       z = 255;
       vz = -5;
+
+      if (slot == 0)
+      {
+        xPos = (int)random(0, width/3);
+      } else if (slot == 1)
+      {
+        xPos = (int)random(width/2, 3*width/4);
+      }
+
+      slot ++;
+
+      if (slot>1)
+      {
+        slot = 0;
+      }
     }
 
     boolean isDead()
@@ -191,4 +279,32 @@ class Moody extends Scene {
       return bounceCount >= 2;
     }
   }
+
+  //void Setup()
+  //{
+
+  //image1 = loadImage("horse.png");
+  //image1.resize(xSize, ySize);
+  //image2 = loadImage("branch.png");
+  //image2.resize(xSize, ySize);
+  //image3 = loadImage("groupOfHorses.png");
+  //image3.resize(xSize, ySize);
+  //image4 = loadImage("HorseCloseUp");
+  //image4.resize(xSize, ySize);
+  //image5 = loadImage("fullHorse");
+  //image5.resize(xSize, ySize);
+  //image6 = loadImage("boat");
+  //image6.resize(xSize, ySize);
+
+  //}
+
+  //void Display()
+  //{
+  //image(image1, xPos, yPos);
+  //image(image2, xPos, yPos);
+  //image(image3, xPos, yPos);
+  //image(image4, xPos, yPos);
+  //image(image5, xPos, yPos);
+  //image(image6, xPos, yPos);
+  //}
 }

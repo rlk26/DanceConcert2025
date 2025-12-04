@@ -22,6 +22,9 @@ void setup() {
   scenes.add(new FlowerBurst()); //15
   //scenes.add(new GlueSong()); //16
   scenes.add(new OneMoreTime()); //17
+  scenes.add(new NewOne(this));
+  scenes.add(new Extra());
+  //scenes.add(new SuperMover());
 }
 
 void draw() {
@@ -81,7 +84,10 @@ void keyPressed() {
     current = 16;
     reset();
   } else if (key == ',' || key == '<') {
-    //current = 17;
+    current = 17;
+    reset();
+  } else if (key == '.' || key == '>') {
+    current = 18;
     reset();
   } else {
     scenes.get(current).keyPressed();
@@ -103,6 +109,7 @@ void reset() {
   frameRate(60);
   stroke(0);
   fill(255);
+  noFill();
   strokeWeight(1);
   noTint();
   ellipseMode(CENTER);

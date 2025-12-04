@@ -114,9 +114,9 @@ boolean isInFluid(Fluid f)
       position.x = 0 + radius;
     }
 
-    if (position.y + radius > height) {
+    if (position.y + radius > height*0.65) {
       velocity.y *= -1;
-      position.y = height - radius;
+      position.y = height*0.65 - radius;
     } else if (position.y - radius < 0) {
       velocity.y *= -1;
       position.y = 0 + radius;

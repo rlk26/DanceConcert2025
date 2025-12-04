@@ -1,3 +1,5 @@
+
+
 //declare the class
   //add variable for position, width, its thickness(Drag) and height
   
