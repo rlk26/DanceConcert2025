@@ -6,7 +6,7 @@ void setup() {
   fullScreen(P3D);
   scenes.add(new Blank()); //0
   scenes.add(new GlueSong()); //1
-  scenes.add(new OneMoreTime());//2
+  scenes.add(new GlueSong2());//2
   
 }
 

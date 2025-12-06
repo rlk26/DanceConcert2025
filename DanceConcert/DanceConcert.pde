@@ -20,11 +20,15 @@ void setup() {
   scenes.add(new Whiplash(this));//13
   scenes.add(new Skyline());//14
   scenes.add(new FlowerBurst()); //15
-  //scenes.add(new GlueSong()); //16
-  scenes.add(new OneMoreTime()); //17
-  scenes.add(new NewOne(this));
-  scenes.add(new Extra());
-  //scenes.add(new SuperMover());
+  scenes.add(new OneMoreTime()); //16
+  scenes.add(new NewOne(this)); //17
+  scenes.add(new Extra()); //18
+  scenes.add(new SuperMover()); //19
+  scenes.add(new Kalediscope()); //20
+  scenes.add(new Claire()); //21
+  scenes.add(new PreshowLines()); //22
+  scenes.add(new Dots()); //23
+  scenes.add(new Organic()); //24
 }
 
 void draw() {
@@ -89,6 +93,24 @@ void keyPressed() {
   } else if (key == '.' || key == '>') {
     current = 18;
     reset();
+  } else if (key == '/' || key == '?') {
+    current = 19;
+    reset();
+  } else if (key == ':' || key == ';') {
+    current = 20;
+    reset();
+  } else if (key == '"') {
+    current = 21;
+    reset();
+  } else if (key == 'L' || key == 'l') {
+    current = 22;
+    reset();
+  } else if (key == 'k' || key == 'K') {
+    current = 23;
+    reset();
+  } else if (key == 'j' || key == 'J') {
+    current = 24;
+    reset();
   } else {
     scenes.get(current).keyPressed();
   }
@@ -105,7 +127,7 @@ void reset() {
   scenes.get(current).reset();
   scenes.get(current).init();
   background(0);
-  colorMode(RGB);
+  colorMode(RGB, 255, 255, 255);
   frameRate(60);
   stroke(0);
   fill(255);

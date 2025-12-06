@@ -4,7 +4,7 @@ ArrayList<Tree> trees;
 PImage treeTex;
 
 PImage[] speeches;
-int totalSpeeches = 12;
+int totalSpeeches = 11;
 
 float bubbleAlpha = 0;
 int bubbleIndex = -1; // -1 = none
@@ -25,7 +25,9 @@ void setup() {
   speeches = new PImage[totalSpeeches];
   for (int i = 0; i < totalSpeeches; i++) {
     String filename = "Glue" + nf(i+1, 2) + ".png";
+ 
     speeches[i] = loadImage(filename);
+    speeches[i].resize(1000, 600);
   }
 
   trees = new ArrayList<Tree>();

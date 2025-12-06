@@ -1,31 +1,32 @@
-class GlueSong extends Scene {
+class GlueSong2 extends Scene {
   PVector camPos, camCenter;
   ArrayList<Tree> trees;
 
   PImage treeTex;
 
   PImage[] speeches;
-  int totalSpeeches = 16;
+  int totalSpeeches = 11;
 
   float bubbleAlpha = 0;
   int bubbleIndex = -1; // -1 = none
   boolean fadingIn = false;
   boolean fadingOut = false;
 
-  GlueSong() {
+  GlueSong2() {
+    //size(1500, 1000, P3D); //1280,720
     noCursor();
-    //fullScreen();
+    fullScreen(P3D);
     camPos = new PVector(0, 0, 600);
     camCenter = new PVector(0, 0, 0);
 
 
     treeTex = loadImage("Dand_Flow.png");
-    treeTex.resize(150, 100);
 
 
     speeches = new PImage[totalSpeeches];
     for (int i = 0; i < totalSpeeches; i++) {
-      String filename = "Speech" + nf(i+1, 2) + ".png";
+      String filename = "Glue" + nf(i+1, 2) + ".png";
+
       speeches[i] = loadImage(filename);
       speeches[i].resize(1000, 600);
     }
@@ -80,7 +81,7 @@ class GlueSong extends Scene {
       this.tex = tex;
       this.baseSize = random(20);
       this.size = baseSize;
-      this.maxSize = baseSize + random(30, 60);
+      this.maxSize = baseSize + random(40, 70);
       this.growth = random(0.3, 0.6);
     }
 

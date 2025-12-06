@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 
 ArrayList<RoseBurst> bursts = new ArrayList<RoseBurst>();
 float globalTime = 0;
